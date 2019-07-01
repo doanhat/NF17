@@ -1,0 +1,73 @@
+Membre (#numeroMembre : int, nom : varchar, prenom : varchar, dateDeNaissance : date, adresse : varchar, telephone : numeric(10), etatDossier : char(1))
+Contraintes :
+    - nom, prenom, dateDeNaissance NOT NULL
+
+Méthodes :    
+- soldeAPayer()
+
+Epreuve (#competition=>Competition, #numeroEpreuve : int, dateEpreuve : date, heureEpreuve : time, specialite=>Specialite)  
+Contraintes :
+    - dateEpreuve,specialite NOT NULL
+
+Resultat(#membre=> Membre, #numeroEpreuve, #competitionEpreuve, rang : int, points : int) 
+Contraintes : 
+    - clef étrangère : (Resultat.numeroEpreuve,Resultat.competitionEpreuve) => (Epreuve.numeroEpreuve,Epreuve.competition) ;
+    - rang NOT NULL ;
+    - (numeroEpreuve,competitionEpreuve,rang) UNIQUE ;
+    - on souhaite également vérifier que si l'on ajoute un résultat à un membre, alors celui-ci doit être actif, professionnel et inscrit à la spécialité de l'épreuve. Pour ce faire, on effectue les opérations suivantes :
+	_ R1 = Restriction(Membre,etatDossier="a") // on vérifie que le membre est actif ;
+	_ R2 = Jointure(R1,Inscription,R1.numeroMembre = Inscription.membre) ;
+	_ R3 = Restriction(R2,R2.statutMembre = "professionnel") ;// on vérifie que le membre est un professionnel ;
+	_ R4 = Jointure(R3,Specialisation,R3.numeroMembre = Specialisation.membre) ;
+	_ R5 = Jointure(R4,Epreuve,R5.specialite = Epreuve.specialite) ;
+	>>> on vérifie alors que Projection(Resultat,membre,epreuve) IN Projection(R5,numeroMembre,numeroEpreuve) 
+
+Activite(#numeroActivite: int, titreActivite : varchar, adresseActivite: varchar) 
+Contraintes :
+    - titreActivite NOT NULL ;
+    - dans la MCD, la classe Activite est abstraite. Il faut donc s'assurer que Projection(Activite,numeroActivite) IN Union(Projection(Financement,numeroActivite),Projection(Competition,numeroActivite)).
+
+Financement(#numeroActivite=>Activite,dateActivite: date, heureActivite: time)
+
+Competition(#numeroActivite=>Activite, dateDebut : date, dateFin : date, lieuCompetition : varchar)
+Contrainte :
+    - dans la MCD, les héritages sont exclusifs. Il faut donc s'assurer que Intersection(Projection(Financement,numeroActivite),Projection(Competition,numeroActivite)) IS NULL.
+    - CHECK(dateDebut <= dateFin)
+
+CompetitionInterne(#numeroActivite=>Competition)
+CompetitionExterne(#numeroActivite=>Competition, nomOrganisateur: varchar, adresse: varchar, telephoneResponsable: char(10))
+Contraintes :
+	- clef étrangère vers OrganisateurExterne : (CompetitionExterne.nomOrganisateur, CompetitionExterne.adresse, CompetitionExterne.telephoneResponsable) => (OrganisateurExterne.nomOrganisateur,OrganisateurExterne.adresse, OrganisateurExterne.telephone)
+	- CompetitionExterne.nomOrganisateur, CompetitionExterne.adresse, CompetitionExterne.telephoneResponsable NOT NULL
+	- héritage exclusif : Intersection(Projection(CompetitionInterne,numeroActivite),Projection(CompetitionExterne,numeroActivite)) IS NULL
+	- classe Competition abstraite : Projection(Competition,numeroActivite) IN Union(Projection(CompetitionInterne,numeroActivite),Projection(CompetitionExterne,numeroActivite))
+
+Inscription(#numeroInscription : int, anneeInscription : numeric(4), statutMembre : varchar, membre=>Membre)
+Contraintes: 
+    - anneeInscription, statutMembre, fraisInscription, membre NOT NULL
+    - on souhaite également s'assurer que si le membre s'inscrit en tant qu'amateur, alors ses frais d'inscription sont nuls et s'il s'inscrit en tant que professionnel, alors ses frais d'inscription sont de 25€ ; pour ce faire :
+	_ R1 = Restriction(Inscription,statutMembre="amateur") ;
+	_ R2 = Restriction (Inscription,fraisInscription=0) ;
+	_ R3 = Restriction (Inscription,statutMembre="professionnel") ;
+	_ R4 = Restriction (Inscription,fraisInscription=25) ;
+	>>> on vérifie alors que Projection(R1,numeroInscription) = Projection(R2,numeroInscription) AND Projection(R3,numeroInscription) = Projection(R4,numeroInscription)
+Méthode : fraisInscription()
+
+Paiement(#numeroPaiement : int, montantPaiement : int, membre: int, anneeInscription: int) 
+Contrainte : 
+    - clef étrangère : (Paiement.membre,Paiement.anneeInscription) => (Inscription.membre,Inscription.anneeInscription) ;
+    - montantPaiement, inscription NOT NULL
+
+Responsabilite(#numeroMembre=>Membre,#numeroActivite=>Activite,#responsabiliteMembre : varchar)
+
+Specialite(#nomSpecialite : varchar, #discipline=>Discipline)
+
+Discipline(#nomDiscipline : varchar)
+
+Specialisation(#membre=>Membre, #nomSpecialite=>Specialite.nomSpecialite, #discipline=>Specialite.discipline)
+
+OrganisateurExterne(#nomOrganisateur : varchar, #adresse : varchar, nomResponsable : varchar, prenomResponsable : varchar, #telephoneResponsable : numeric(10))
+Contrainte : 
+    - nomOrganisateur, nomResponsable, prenomResponsable, telephoneResponsable NOT NULL
+
+Remarque générale : les attributs ayant la contrainte NOT NULL ont été définis de manière relativement arbitraire.

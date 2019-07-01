@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE joueurs SYSTEM "joueurs.dtd">
+<joueurs>
+    <joueur>
+        <nom>FAVREAU</nom>
+        <prenom>Clément</prenom>
+    </joueur>
+    <joueur>
+        <nom>BOULLEE</nom>
+        <prenom>Alicia</prenom>
+    </joueur>
+    <joueur>
+        <nom>Doan</nom>
+        <prenom>Minh</prenom>
+    </joueur>
+</joueurs>

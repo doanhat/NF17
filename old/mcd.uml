@@ -1,0 +1,155 @@
+@startuml
+skinparam dpi 500
+skinparam monochrome true
+skinparam linetype ortho
+hide circle
+
+class Membre {
+	numeroMembre : int{key}
+	nom : string
+	prenom : string
+	adresse : string
+	dateDeNaissance : date
+	{field} tel : int(10)
+    	createNumMembre()
+	membreActif()
+}
+class Inscription {
+	date : timestamp
+	fraisIns()
+	montantPayé : int
+	statutInscription : {a,p}
+	solde()
+	setMontantPayé()
+}
+class Activité {
+	numéroActivité : string {key}
+	titre : string
+    
+}
+
+class Financement {
+	date : timestamp
+	adresse : string
+    
+}
+class Compétition {
+	heure : timestamp
+	adresse : string
+}
+
+class Epreuve {
+	date : timestamp
+    
+}
+
+class Discipline {
+	nom : string {key}
+    
+}
+
+class Spécialité {
+	nom : string {key}
+    
+}
+
+class Comité {
+	nom : string {key}
+    
+    
+}
+
+class Participant {
+	numéro : int {local key}
+	nom : string
+	prénom : string
+	createNuméro()
+}
+
+class CompétitionExterne {
+	nomClub : varchar
+	responsableClub : varchar
+	{field} tel : int(10)
+}
+
+class RésultatInterne {
+	résultat : int
+}
+
+
+class RésultatExterne {
+	résultat : int
+}
+note as NoteCheckSpé
+	Un professionnel ne peut
+	s'inscrire à une épreuve
+	que s'il est inscrit à la
+	spécialité de cette épreuve.
+end note
+
+
+note left of Epreuve
+	Si l'épreuve est externe, alors
+	elle est composée de participants ;
+	si elle est interne, elle est composée
+	de membres du club.
+end note
+
+note left of Membre
+	La méthode membreActif fonctionnera
+	comme suit :
+	- si le membre est actif en tant
+	que professionnel, alors la méthode
+	retournera "p" ;
+
+	- si le membre est actif en tant
+	qu'amateur, alors la méthode
+	retournera "a" ;
+
+	- sinon, si le membre n'est pas
+	actif, la méthode retournera NULL.
+
+	Un membre est considéré comme actif
+	s'il existe une inscription datant
+	de moins d'un an rattachée à ce
+	membre, et pour laquelle
+	Inscription.solde = 0.
+end note
+note as Excl
+	Sauf indication contraire, les héritages de cette MLD sont
+	exclusifs, et les attributs doivent tous être non nuls.
+end note
+note as NotExcl
+	L'héritage n'est pas exclusif,
+	un membre ayant pu être
+	professionnel par le passé
+	peut ensuite être
+	amateur, et vice-versa.
+end note
+
+Professionnel "*"--"1..*" Spécialité : pratique >
+Comité "1"--"*" Activité: organise >
+Activité <|-- Financement
+Activité <|-- Compétition
+Membre "1..*"--"*" Comité : < réunit
+Discipline *-"1..*" Spécialité
+Membre "1"-"1..*" Inscription: < correspond à
+Compétition *-"1..*" Epreuve
+Membre <|-- Amateur
+Membre <|-- Professionnel
+Compétition <|-- CompétitionExterne
+Compétition <|- CompétitionInterne
+Professionnel "*" -- "*" Epreuve: participe >
+(Professionnel,Epreuve) - NoteCheckSpé
+(Professionnel,Spécialité) - NoteCheckSpé
+NotExcl -- (Membre,Professionnel)
+NotExcl -- (Membre,Amateur)
+(Professionnel,Epreuve). RésultatInterne
+Epreuve"*" - "1..*" Participant: < participe
+(Participant,Epreuve). RésultatExterne
+Epreuve "*" -- "1" Spécialité: revêt de >
+Participant "1..*" -* CompétitionExterne
+
+Comité "*" -- "1" Membre : < dirige 
+
+@enduml

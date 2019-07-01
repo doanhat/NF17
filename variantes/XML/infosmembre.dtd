@@ -1,0 +1,8 @@
+<!ELEMENT infosmembre (adresses,telephones,age?)>
+<!ELEMENT adresses (adressedomicile,adressetravail)>
+<!ELEMENT adressedomicile (#PCDATA)>
+<!ELEMENT adressetravail (#PCDATA)>
+<!ELEMENT telephones (teldomicile,teltravail)>
+<!ELEMENT teldomicile (#PCDATA)>
+<!ELEMENT teltravail (#PCDATA)>
+<!ELEMENT age (#PCDATA)>

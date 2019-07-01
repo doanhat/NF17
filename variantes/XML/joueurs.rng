@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+    xmlns="http://relaxng.org/ns/structure/1.0">
+    <start>
+        <element name="joueurs">
+            <zeroOrMore>
+                <element name="joueur">
+                    <element name="nom">
+                        <text />
+                    </element>
+                    <element name="prenom">
+                        <text />
+                    </element>
+                </element>
+            </zeroOrMore>
+        </element>
+    </start>
+</grammar>

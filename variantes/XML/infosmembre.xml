@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE infosmembre SYSTEM "infosmembre.dtd">
+<infosmembre>
+    <adresses>
+    <adressedomicile>1 Rue de la Foire, 60200 Compiègne</adressedomicile>
+    <adressetravail>2 Allée des Arbres, 60200 Compiègne</adressetravail>
+    </adresses>
+    <telephones>
+    <teldomicile>0123456789</teldomicile>
+    <teltravail>0974563210</teltravail>
+    </telephones>
+    <age>20</age>
+</infosmembre>

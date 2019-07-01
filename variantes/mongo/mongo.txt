@@ -1,0 +1,101 @@
+db.Activite.drop()
+
+
+db.Activite.insert(
+{"titre":"Compétition de natation",
+"adresse":"1 square Gabriel Auguste Ancelet",
+"dateDebut" : "08/05/2019",
+"dateFin" : "08/05/2019",
+"lieu" : "Salle Pierre Guillaumat",
+"Reponsabilite" :[
+{"membre":1,
+"fonction":[{"nom":"responsable des cables"},
+{"nom":"arbitre"}]},
+{"membre" : 2,
+"fonction":[{"nom" : "accueil"}
+]}
+],
+"evenement":[
+{"type" : "Epreuve",
+"epreuve" : 1,
+"date" : "08/05/2019",
+"heure" : "10:00"
+},
+{"type" : "Epreuve",
+"epreuve" : 2,
+"date" : "08/05/2019",
+"heure" : "14:00"
+},
+{"type": "Remise des prix",
+"date": "08/05/2019",
+"heure" : "16:00",
+"nombreTrophées" : 8
+},
+{"type": "Buvette",
+"nombreBaguettes" : 100,
+"prixSandwich" : 2,
+"prixCanette" : 1,
+"prixBouteille" : 1.5,
+"prixGateau" : 2,
+"prixEau" : 3
+}]
+})
+
+db.Activite.insert(
+{"titre":"Présentation des compétitions du mois",
+"adresse":"Complexe sportif : 2 rue Daniel roche",
+"evenement":[
+{"type": "Réunion",
+"date" : "29/03/2019",
+"heureDebut" : "13:30",
+"heureFin" : "15:00"}
+]
+})
+
+db.Activite.insert(
+{"titre":"Vente de gateaux",
+"adresse":"3 avenue Jan de Vries",
+"evenement":[
+{"type": "Vente",
+"date" : "04/05/2019",
+"heureDebut" : "11:00",
+"heureFin" : "15:30"}
+]
+})
+
+db.Activite.insert(
+{"titre":"Compétition de Judo",
+"adresse":"Rue de l'ancien port à Belleville",
+"dateDebut" : "17/04/2019",
+"dateFin" : "18/04/2019",
+"evenement":[
+	{"type" : "Competition senior",
+	"organisateurExterne" :[
+		{"nom": "Club sportif de Petit-caux",
+		"adresse": "2 avenue Denis Woronoff",
+		"responsable" : [
+			{"nom" : "Bruyon",
+			"prenom" : "Louis",
+			"telephone" : "0618976342"
+			}],
+	}],
+	"date" : "17/04/2019",
+	"heure" : "10:00"
+	},
+	{"type" : "Competition junior",
+	"organisateurExterne" :[
+		{"nom": "Club sportif de Petit-caux",
+		"adresse": "2 avenue Denis Woronoff",
+		"responsable" : [
+			{"nom" : "Bruyon",
+			"prenom" : "Louis",
+			"telephone" : "0618976342"
+			}],
+	}],
+	"date" : "18/04/2019",
+	"heure" : "10:00"
+
+}]
+})
+
+

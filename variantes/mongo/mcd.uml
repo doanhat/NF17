@@ -1,0 +1,105 @@
+@startuml
+skinparam linetype ortho
+skinparam monochrome true
+skinparam dpi 400
+hide circle
+
+package "Activités - MongoDB" {
+class Evenement{
+}
+
+Evenement *-- "0..1" OrganisateurExterne
+
+Evenement  <|- Epreuve
+Activite *- Evenement
+
+class Epreuve{
+dateEpreuve : date
+heureEpreuve : time
+}
+
+class Activite{
+titreActivite : varchar
+adresseActivite : varchar
+}
+
+class OrganisateurExterne{
+nomOrganisateur : varchar
+adresse : varchar
+nomResponsable : varchar
+prenomResponsable : varchar
+{field} telephoneResponsable : numeric(10)
+}
+
+}
+
+
+class Discipline{
+numeroDiscipline : int {key}
+nomDiscipline : varchar {not null}
+}
+
+Epreuve "0..*" -- "1" Specialite : < regroupe
+
+class Specialite {
+numeroSpecialite : int {key}
+nomSpecialite : varchar {not null}
+}
+
+class Paiement{
+numeroPaiement : int {key}
+montantPaiement : int {not null}
+}
+
+Membre "0..*" -- "0..*" Activite 
+    (Membre,Activite) .. Responsabilite
+    
+Membre "0..*" -- "0..*" Epreuve 
+    (Membre,Epreuve) .. Resultat
+    
+Membre "1" -- "0..*" Inscription : effectue >
+
+Membre "0..*" -- "0..*" Specialite : spécialise dans >
+
+Inscription "1" -- "0..*" Paiement : est suivi de >
+
+Specialite "0..*" -- "1" Discipline : appartient à >
+
+class Resultat{
+numeroResultat : int {local key}
+dateResultat : date
+rang : int {not null}
+points : int
+}
+
+class Inscription{
+numeroInscription : int {key}
+{field} anneeInscription : numeric(4) {not null}
+statutMembre : varchar {not null}
+fraisInscription : float {not null}
+}
+ 
+class Responsabilite{
+	responsabiliteMembre : varchar {local key}
+}
+
+class Membre{
+numeroMembre : int {key}
+nom : varchar {not null}
+prenom : varchar {not null}
+dateDeNaissance : date {not null}
+adresse : varchar 
+{field} telephone : numeric(10)
+{field} etatDossier : char(1)
+soldeAPayer()
+}
+
+
+
+
+note as notExcl 
+	Les héritages sont tous exclusifs.
+end note
+
+
+@enduml

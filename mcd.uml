@@ -1,0 +1,127 @@
+@startuml
+skinparam linetype ortho
+skinparam monochrome true
+skinparam dpi 400
+hide circle
+Membre "0..*" -- "0..*" Activite 
+    (Membre,Activite) .. Responsabilite
+    
+Membre "0..*" -- "0..*" Epreuve 
+    (Membre,Epreuve) .. Resultat
+    
+Membre "1" -- "0..*" Inscription : effectue >
+
+Membre "0..*" -- "0..*" Specialite : spécialise dans >
+
+Inscription "1" -- "0..*" Paiement : est suivi de >
+
+Specialite "0..*" -- "1" Discipline : appartient à >
+
+Specialite "1" -- "0..*" Epreuve : regroupe >
+
+CompetitionExterne "0..*" -- "1" OrganisateurExterne : organisée par >
+
+Activite <|-- Financement
+
+Activite <|-- Competition
+
+Competition <|-- CompetitionInterne
+
+Competition <|-- CompetitionExterne
+
+Competition  *- "0..*" Epreuve
+Competition *-- "*" Equipe
+Joueur "5" -* Equipe
+
+class Equipe{
+{field} nom : varchar(20}
+}
+
+class Joueur{
+numeroJoueur : number
+{field} nom : varchar(20)
+{field} prenom : varchar(20)
+}
+
+class Resultat{
+numeroResultat : int {local key}
+dateResultat : date
+rang : int {not null}
+points : int
+}
+
+class Inscription{
+numeroInscription : int {key}
+{field} anneeInscription : numeric(4) {not null}
+statutMembre : varchar {not null}
+fraisInscription : float {not null}
+}
+ 
+class Responsabilite{
+	responsabiliteMembre : varchar {local key}
+}
+
+class Membre{
+numeroMembre : int {key}
+nom : varchar {not null}
+prenom : varchar {not null}
+dateDeNaissance : date {not null}
+adresse : varchar 
+{field} telephone (0..*) : numeric(10)
+{field} etatDossier : char(1)
+soldeAPayer()
+}
+
+
+abstract class Activite{
+numeroActivite : int {key}
+titreActivite : varchar {not null}
+adresseActivite : varchar
+}
+
+class Financement{
+dateActivite : date
+heureActivite : time
+}
+
+abstract class Competition{
+dateDebut : date
+dateFin : date
+lieuCompetition : varchar
+
+}
+
+class OrganisateurExterne{
+numeroOrganisateur : int {key}
+nomOrganisateur : varchar {not null}
+adresse : varchar
+nomResponsable : varchar {not null}
+prenomResponsable : varchar {not null}
+{field} telephoneResponsable : numeric(10) {not null}
+}
+
+note as notExcl 
+	Les héritages sont tous exclusifs.
+end note
+
+class Specialite {
+numeroSpecialite : int {key}
+nomSpecialite : varchar {not null}
+}
+
+class Discipline{
+numeroDiscipline : int {key}
+nomDiscipline : varchar {not null}
+}
+
+class Paiement{
+numeroPaiement : int {key}
+montantPaiement : int {not null}
+}
+
+class Epreuve{
+numeroEpreuve : int {local key}
+dateEpreuve : date {not null}
+heureEpreuve : time
+}
+@enduml

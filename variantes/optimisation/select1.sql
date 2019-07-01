@@ -1,0 +1,2 @@
+SELECT numeroActivite
+FROM CompetitionExterne[numOrganisateurExterne];
