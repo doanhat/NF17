@@ -46,6 +46,20 @@
             }
             return $data;
         }
+
+        public function getDataID($table,$id)
+        {
+            $sql = "SELECT * FROM $table WHERE id = '$id'";
+            $this->execute($sql);
+            if ($this->num_rows()!=0) {
+                $data = mysqli_fetch_array($this->result);
+            }
+            else
+            {
+                $data = 0;
+            }
+            return $data;
+        }
         public function num_rows()
         {
             if ($this->result) {
@@ -91,7 +105,30 @@
             return $this->execute($sql);
 
         }
+        public function deleteData($id,$table)
+        {
+            $sql = "DELETE FROM $table WHERE id = '$id'";
+            return $this->execute($sql);
 
+        }
+        public function findData($table,$key)
+        {
+            /*if ($this->result) {
+                $data = 0;
+            }*/
+            $sql = "SELECT * FROM $table WHERE nomEtPrenom REGEXP '$key' ORDER BY id DESC";
+            $this->execute($sql);
+            if ($this->num_rows()==0) {
+                $data = 0;
+            }
+            else
+            {
+                while ($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
 
     }
 

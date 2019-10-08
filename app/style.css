@@ -34,13 +34,13 @@
 }
 
 .list_membre{
-    width: 500px;
+    width: 800px;
     margin: auto;
     margin-top: 50px;
 }
 
 .list_membre table{
-    width: 500px;
+    width: 800px;
     border: 1px solid #999999;
 }
 
@@ -50,3 +50,8 @@
     text-align: center;
 }
 
+.find{
+    width: 800px;
+    margin: auto;
+    margin-top: 50px;
+}

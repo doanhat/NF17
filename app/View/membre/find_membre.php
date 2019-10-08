@@ -27,7 +27,7 @@
         <tbody>
             <?php
                 $id = 1;
-                foreach ($data as $value) {
+                foreach ($dataFind as $value) {
             ?>
             <tr>
                 <td><?php echo $id; ?></td>
