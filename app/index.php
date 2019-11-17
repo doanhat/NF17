@@ -2,11 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet"  href="style.css">
+    <link rel="stylesheet"  href="./css/style1.css">
     <title>Gestion</title>
 </head>
 <body>
-
 </body>
 </html>
 
