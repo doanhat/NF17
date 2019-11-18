@@ -1,21 +1,26 @@
-*{
-    margin: 0px;
-    padding: 0px;
+@import url('https://fonts.googleapis.com/css?family=Helvetica');
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Helvetica';
+    font-size: 28px;
+    color: #222;
 }
-.content{
-    width: 400px;
-    margin: 0px auto;
-}
+
+
+
+
 .inscription_membre{
-    width: 400px;
-    border: 1px solid #DDDDDD;
-    margin-top: 60px;
+    width: 100%;
+    border: 1px solid #f1c40f;
+    margin-top: 5%;
 }
 
 .inscription_membre h3{
-    background: #009688;
-    padding: 5px;
-    color: #FFF;
+    background: #f1c40f;
+    padding: 10px;
+    color: #000;
     text-align: center;
 }
 .inscription_membre form table tr td{
@@ -25,7 +30,12 @@
 .inscription_membre form table tr td input{
     padding: 3px 5px;
 }
-
+.inscription_membre div {
+    text-align: center;
+}
+form {
+    width: 98%;
+}
 .list_button {
     background: yellow;
     padding: 5px;
@@ -41,11 +51,11 @@
 
 .list_membre table{
     width: 800px;
-    border: 1px solid #999999;
+    border: 1px solid #f1c40f;
 }
 
 .list_membre h3{
-    background: #009688;
+    background: #f1c40f;
     color: #FFF;
     text-align: center;
 }

@@ -63,6 +63,8 @@ html, body {
 	border-top: 2px solid rgba(62,44,100, 0.6);
 	width: 95%;
 	margin-bottom: 2rem;
+	text-align: center;
+
 }
 .button{
 	text-align: center;
@@ -93,9 +95,13 @@ footer {
 	background-color: #3f3f3f;
 	color: #d5d5d5;
 }
+hr {
+
+}
 hr.light {
 	border-top: 1px solid #d5d5d5;
 	width: 100%;
+	text-align: center;
 }
 .light-100 {
 	border-top: 1px solid #d5d5d5;
