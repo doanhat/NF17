@@ -23,13 +23,7 @@ html, body {
     color: #000;
     text-align: center;
 }
-.inscription_membre form table tr td{
-    padding: 5px;
-}
 
-.inscription_membre form table tr td input{
-    padding: 3px 5px;
-}
 .inscription_membre div {
     text-align: center;
 }
@@ -44,19 +38,20 @@ form {
 }
 
 .list_membre{
-    width: 800px;
+    width: 100%;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 2%;
 }
 
 .list_membre table{
-    width: 800px;
+    width: 100%;
     border: 1px solid #f1c40f;
 }
 
 .list_membre h3{
     background: #f1c40f;
-    color: #FFF;
+    padding: 10px;
+    color: #000;
     text-align: center;
 }
 

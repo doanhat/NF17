@@ -1,49 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Club sportif</title>
-    <!-- Import Boostrap css, js, font awesome here -->
-    <link rel="stylesheet"  href="./css/style1.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link href="./css/style.css" rel="stylesheet">
-</head>
-<body>
-<!-- Navigation -->
-<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-    <div class="container-fluid">
-        <a class="navbar-branch" href="index.html">
-            <img src="./images/logo.png" height="50">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarResponsive">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Acceuil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#apropos">À propos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#services">Services</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#auteurs">Auteurs</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+
+<?php
+    $title = "Club sportif";
+    ob_start();
+
+?>
 <!-- Carousel -->
 <div id="slides" class="carousel slide" data-ride="carousel">
     <ul class="carousel-indicators">
@@ -56,7 +16,7 @@
         <div class="carousel-caption">
                 <h1 class="display-2">Club Sportif</h1>
                 <h3>Gérer votre club !</h3>
-                <a type="button" class="btn btn-outline-light btn-lg" href="#apropos">
+                <a type="button" class="btn btn-outline-light btn-lg" href="#about">
                     À PROPOS DU PROJET
                 </a>
                 <a type="button" class="btn btn-primary btn-lg" href="https://github.com/doanhat/Relational-and-non-relational-databases">GITHUB</a>
@@ -78,7 +38,7 @@
 </div>
 <!-- jumbotron -->
 <div class="container-fluid">
-    <div class="jumbotron" id = "apropos">
+    <div class="jumbotron" id = "about">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <p>Dans ce projet, nous proposerons une base de données pour la gestion d'un club sportif. Pour plus d'informations, veuillez lire la note de clarification.</p>
         </div>
@@ -152,7 +112,7 @@
     <hr class="my-4">
 </div>
 
-<div class="container-fluid padding" id="auteurs">
+<div class="container-fluid padding" id="authors">
     <div class="row welcome text-center">
         <div class="col-12">
             <h1 class="display-4">Auteurs</h1>
@@ -181,7 +141,7 @@
                         Clément Fraveau
                     </h4>
                     <p class="card-text">Étudiant en deuxième année à l'UTC</p>
-                    <a href="#auteurs" class="btn btn-outline-secondary">Profil</a>
+                    <a href="#authors" class="btn btn-outline-secondary">Profil</a>
                 </div>
             </div>
         </div>
@@ -193,7 +153,7 @@
                         Alicia Boullée
                     </h4>
                     <p class="card-text">Étudiante en deuxième année à l'UTC</p>
-                    <a href="#auteurs" class="btn btn-outline-secondary">Profil</a>
+                    <a href="#authors" class="btn btn-outline-secondary">Profil</a>
                 </div>
             </div>
         </div>
@@ -205,39 +165,16 @@
                         Candice Bimont
                     </h4>
                     <p class="card-text">Étudiante en deuxième année à l'UTC</p>
-                    <a href="#auteurs" class="btn btn-outline-secondary">Profil</a>
+                    <a href="#authors" class="btn btn-outline-secondary">Profil</a>
                 </div>
             </div>
         </div>
     </div>
     <hr class="my-4">
 </div>
+<?php $content = ob_get_clean(); ?>
 
-<footer>
-    <div class="container-fluid padding">
-        <div class="row text-center">
-
-            <div class="col-md-12">
-                <hr class="light">
-                <h5>Projet</h5>
-                <hr class="light">
-                <p>NF17 : Club sportif</p>
-
-            </div>
-
-            <div class="col-12">
-                <hr class="light">
-                <h5>&copy; UTC</h5>
-            </div>
-        </div>
-    </div>
-</footer>
-</body>
-</html>
-
-
-
-
+<?php require('View/template/pageTemplate.php') ?>
 
 
 
