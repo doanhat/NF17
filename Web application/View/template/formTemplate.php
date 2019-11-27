@@ -36,7 +36,7 @@
         <div>
             <?php
                 if (isset($success) && $success=='add_success') {
-                        echo "<p style='color: green'; text-align:center >le membre est avec succès<p/>";
+                        echo "<p style='color: green'; text-align:center >le membre est ajouté avec succès<p/>";
                 }
              ?>
 

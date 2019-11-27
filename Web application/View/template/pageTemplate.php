@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title ?></title>
     <!-- Import Boostrap css, js, font awesome here -->
-    <link rel="stylesheet"  href="./css/style1.css">
+    <link rel="stylesheet"  href="Assets/css/styleForm.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
@@ -13,14 +13,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js">
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link href="./css/style.css" rel="stylesheet">
+    <link href="Assets/css/stylePage.css" rel="stylesheet">
 </head>
 <body>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top sticky-mid">
     <div class="container-fluid">
         <a class="navbar-branch" href="clubsportif.php">
-            <img src="./images/logo.png" height="50">
+            <img src="Assets/images/logo.png" height="50">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarResponsive">

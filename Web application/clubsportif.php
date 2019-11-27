@@ -22,17 +22,17 @@
                 <a type="button" class="btn btn-primary btn-lg" href="https://github.com/doanhat/Relational-and-non-relational-databases">GITHUB</a>
             </div>
         <div class="carousel-item active">
-            <img src="./images/carousel0.png">
+            <img src="Assets/images/carousel0.png">
 
         </div>
         <div class="carousel-item">
-            <img src="./images/carousel1.png">
+            <img src="Assets/images/carousel1.png">
         </div>
         <div class="carousel-item">
-            <img src="./images/carousel2.png">
+            <img src="Assets/images/carousel2.png">
         </div>
         <div class="carousel-item">
-            <img src="./images/carousel3.png">
+            <img src="Assets/images/carousel3.png">
         </div>
     </div>
 </div>
@@ -125,7 +125,7 @@
     <div class="row padding">
         <div class="col-md-3">
             <div class="card">
-                <img class="card-img-top" src="./images/doannhatminh.png">
+                <img class="card-img-top" src="Assets/images/doannhatminh.png">
                 <div class="card-body">
                     <h4 class="card-title">DOAN Nhat-Minh</h4>
                     <p class="card-text">Étudiant en deuxième année à l'UTC</p>
@@ -135,7 +135,7 @@
         </div>
         <div class="col-md-3">
             <div class="card">
-                <img class="card-img-top" src="./images/johndoe.png">
+                <img class="card-img-top" src="Assets/images/johndoe.png">
                 <div class="card-body">
                     <h4 class="card-title">
                         Clément Fraveau
@@ -147,7 +147,7 @@
         </div>
         <div class="col-md-3">
             <div class="card">
-                <img class="card-img-top" src="./images/Natasha.png">
+                <img class="card-img-top" src="Assets/images/Natasha.png">
                 <div class="card-body">
                     <h4 class="card-title">
                         Alicia Boullée
@@ -159,7 +159,7 @@
         </div>
         <div class="col-md-3">
             <div class="card">
-                <img class="card-img-top" src="./images/Natasha.png">
+                <img class="card-img-top" src="Assets/images/Natasha.png">
                 <div class="card-body">
                     <h4 class="card-title">
                         Candice Bimont
